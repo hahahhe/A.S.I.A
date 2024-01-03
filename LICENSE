@@ -1,0 +1,14 @@
+A.S.I.A
+
+This project utilizes several models, each governed by its own license:
+
+YOLOv5, used under the terms of the AGPLv3 license.
+Full license text: https://www.gnu.org/licenses/agpl-3.0.en.html
+
+Kosmos-2-patch14-224, used under the terms of the MIT license.
+Full license text: https://opensource.org/licenses/MIT
+
+AudioLDM-m-full, used under the terms of the CC BY-NC-SA 4.0 license.
+Full license text: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+The use conditions for each model are specified in their respective license documents, and users of this project must adhere to them.

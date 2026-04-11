@@ -1,0 +1,3 @@
+UPLOAD_FOLDER = 'uploads'
+MAX_CONTENT_LENGTH = 30 * 1024 * 1024
+SAVED_FOLDER = 'saved_audios'

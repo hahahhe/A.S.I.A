@@ -1,0 +1,1330 @@
+2026-04-12 00:42:05,784 - WARNING - C:\Users\choij\OneDrive\Desktop\asia\venv\Lib\site-packages\transformers\models\auto\modeling_auto.py:2284: FutureWarning: The class `AutoModelForVision2Seq` is deprecated and will be removed in v5.0. Please use `AutoModelForImageTextToText` instead.
+  warnings.warn(
+
+2026-04-12 00:42:11,401 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-12 00:42:11,401 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-12 00:42:11,402 - INFO -  * Restarting with stat
+2026-04-12 00:42:17,932 - WARNING - C:\Users\choij\OneDrive\Desktop\asia\venv\Lib\site-packages\transformers\models\auto\modeling_auto.py:2284: FutureWarning: The class `AutoModelForVision2Seq` is deprecated and will be removed in v5.0. Please use `AutoModelForImageTextToText` instead.
+  warnings.warn(
+
+2026-04-12 00:42:23,882 - WARNING -  * Debugger is active!
+2026-04-12 00:42:23,883 - INFO -  * Debugger PIN: 456-615-527
+2026-04-12 00:45:11,627 - INFO - [CALL] index args=[], kwargs={}
+2026-04-12 00:45:11,629 - INFO - [RETURN] index result="<!DOCTYPE html>\n<html lang=\"ko\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css\">\n    <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n    <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n    <title>¹ÝÀÀÇü »çÀÌµå ¸Þ´º¹Ù</title>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"../static/css/style.css\">\n</head>\n\n<body>\n    <div class=\"headerContainer\">\n    <h1><img src=\"../static/img/logo.png\" alt=\"A.S.I.A ·Î°í\" id=\"image\"> A.S.I.A</h1>\n    <button type=\"button\" class=\"customButton4\" id=\"merge\">¿µ»ó ÃßÃâ</button>\n    </div>\n    <div class=\"container\">\n        <div class=\"sidebar\">\n            <p id=\"sound\" class=\"menu\"><i class=\"fas fa-magic\"></i> »ý¼ºÇÏ±â</p>\n            <p id=\"main\" class=\"menu\"><i class=\"fas fa-cut\"></i> ÆíÁýÇÏ±â</p>\n            <p id=\"dashboard\" class=\"menu\"><i class=\"fas fa-chart-line\"></i> ´ë½Ãº¸µå</p>\n            <p id=\"price\" class=\"menu\"><i class=\"fas fa-money-bill\"></i> ¿ä±Ý</p>\n        </div>\n\n        <div class=\"content hide\" id=\"soundContent\">\n            <div class=\"sub-sound\">\n            <section>\n                <div class=\"sub-container\">\n                <h2>ºñµð¿À ¾÷·Îµå</h2>\n                    <form id=\"uploadForm\" enctype=\"multipart/form-data\">\n                    <input type=\"file\" name=\"file\" accept=\"video/*\">\n                    <input type=\"button\" value=\"¾÷·Îµå\" onclick=\"uploadVideo()\">\n                </form>\n                </div>\n                <video id=\"originalVideoPlayer\" controls>\n                    <source src=\"\" type=\"video/mp4\">\n                    ºñµð¿À¸¦ Áö¿øÇÏÁö ¾Ê´Â ºê¶ó¿ìÀúÀÔ´Ï´Ù.\n                </video>\n            </section>\n            <section>\n                <div class=\"sub-container\">\n                <h2>°´Ã¼ Å½Áö °á°ú</h2>\n                </div>\n                <video id=\"labeledVideoPlayer\" controls>\n                    <source src=\"\" type=\"video/mp4\">\n                    ºñµð¿À¸¦ Áö¿øÇÏÁö ¾Ê´Â ºê¶ó¿ìÀúÀÔ´Ï´Ù.\n                </video>\n            </section>\n            </div>\n            <section id=\"subsection\">\n                <h2>Å½Áö °á°ú</h2>\n                <div id=\"results\">\n                    <div class=\"wrapper\" style=\"display: none;\">\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                    </div>\n                </div>\n            </section>\n            <section id=\"subsection\">\n                <h2>Ä¸Ã³ ¹× Ä¸¼Ç °á°ú</h2>\n                <div id=\"captureHighlights\">\n                    <div class=\"wrapper\" style=\"display: none;\">\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                    </div>\n                </div>\n            </section>\n        </div>\n\n        <div class=\"content hide\" id=\"mainContent\">\n            <div class=\"mainInner\">\n                <div class=\"container1\">\n                    <div class=\"square1\" id=\"square1\">\n                        <div class=\"listTitle\">Text-to-Sound</div>\n                        <form id=\"audioForm\" method=\"post\">\n                        <div class=\"form-group\">\n                            <label for=\"text\">ÅØ½ºÆ®:</label>\n                            <input type=\"text\" id=\"text\" name=\"text\">\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"duration\">±æÀÌ(ÃÊ):</label>\n                            <input type=\"number\" id=\"duration\" name=\"duration\">\n                        </div>\n                        <div id=\"ldmButton\">\n                            <input type=\"button\" value=\"¿Àµð¿À »ý¼º\" onclick=\"generateAudio()\">\n                            <input type=\"button\" value=\"¿Àµð¿À ÀúÀå\" onclick=\"saveAudio()\" id=\"saveButton\">\n                        </div>\n                        <audio id=\"audioPlayer\" controls style=\"display:none;\"></audio>\n                    </div>\n                    <div class=\"square11\" id=\"square11\">\n                        <div class=\"listTitle\">È¿°úÀ½ ¸®½ºÆ®</div>\n                            <ul></ul>\n                    </div>\n                </div>\n                <div class=\"squareVertical\">\n                    <div class=\"square2\">\n                        <div class=\"video-container\">\n                            <video id=\"videoPlayer1\" controls>\n                                <source src=\"\" type=\"video/mp4\">\n                            </video>\n                        </div>\n                        <div class=\"timeline-container\">\n                            <div class=\"timeline\" id=\"videoTimeline\">\n                                <div class=\"timeline-seeker\"></div>\n                            </div>\n                        <div class=\"timeline\" id=\"audioTimeline\" style=\"background-color: #007bff; width: 0;\"></div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"content hide\" id=\"priceContent\">\n            <div class=\"mainContentContainer\">\n                    <div class=\"squareContainer\">\n                    <div class=\"pack-container\">\n                        <div class=\"header\">\n                          <p class=\"title\">\n                            Starter\n                          </p>\n                          <div class=\"price-container\">\n                            <span>$</span>Free\n                            <span>/mo</span>\n                          </div>\n                        </div>\n                        <div>\n                          <ul class=\"lists\">\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                AI ¿µ»óºÐ¼®\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                ¿µ»ó °´Ã¼ Å½Áö(100tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                               È¿°úÀ½ »ý¼º(100tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                                <span>\n                                  <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                  </svg>\n                                </span>\n                                <p>\n                                 ±¤°í Æ÷ÇÔ\n                                </p>\n                              </li>\n                          </ul>\n                        </div>\n                        <div class=\"button-container\">\n                          <button type=\"button\">\n                            Free Trial\n                          </button>\n                        </div>\n                    </div>\n                    \n                    <div class=\"pack-container\">\n                        <div class=\"header\">\n                          <p class=\"title\">\n                            Pro\n                          </p>\n                          <div class=\"price-container\">\n                            <span>$</span>9.99\n                            <span>/mo</span>\n                          </div>\n                        </div>\n                        <div>\n                          <ul class=\"lists\">\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                AI ¿µ»óºÐ¼®\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                ¿µ»ó °´Ã¼ Å½Áö(300tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                               È¿°úÀ½ »ý¼º(300tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                                <span>\n                                  <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                  </svg>\n                                </span>\n                                <p>\n                                 ±¤°í Á¦°Å\n                                </p>\n                              </li>\n                          </ul>\n                        </div>\n                        <div class=\"button-container\">\n                          <button type=\"button\">\n                            Buy Now\n                          </button>\n                        </div>\n                      </div>\n\n                      <div class=\"pack-container\">\n                        <div class=\"header\">\n                          <p class=\"title\">\n                            Pro+\n                          </p>\n                          <div class=\"price-container\">\n                            <span>$</span>19.99\n                            <span>/mo</span>\n                          </div>\n                        </div>\n                        <div>\n                          <ul class=\"lists\">\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                AI ¿µ»óºÐ¼®\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                ¿µ»ó °´Ã¼ Å½Áö(no limit)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                               È¿°úÀ½ »ý¼º(no limit)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                                <span>\n                                  <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                  </svg>\n                                </span>\n                                <p>\n                                 ±¤°í Á¦°Å\n                                </p>\n                              </li>\n                          </ul>\n                        </div>\n                        <div class=\"button-container\">\n                          <button type=\"button\">\n                            Buy Now\n                          </button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"content hide\" id=\"dashboardContent\">\n          \n          <div class=\"dashboardcontainer\">\n            <div class=\"line-container\">\n                <div class=\"graph\">\n                    <label id=\"gLabel\">ÇÏ·ç Áß ÀÌ¿ë ½Ã°£´ë</label>\n                    <canvas id=\"graph-timeofday\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                </div>\n                <div class=\"graph\">\n                    <label id=\"gLabel\">ÀÏÀÏ »ç¿îµå »ý¼º·®</label>\n                    <canvas id=\"graph-soundcreation\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                </div>\n            </div>\n            <div class=\"pl-container\">\n                <div class=\"chart-container\">\n                    <div class=\"pie-chart\">\n                        <label id=\"gLabel\">¿ä±ÝÁ¦ º° ºñÀ²</label>\n                        <canvas id=\"chart-subscription\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                    </div>\n                    <div class=\"pie-chart\">\n                        <label id=\"gLabel\">API ¹× AI »ç¿ë ºñÀ²</label>\n                        <canvas id=\"chart-api-ai\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                    </div>\n                </div>\n                    <div class=\"sound-container\">\n                      <div class=\"sound-list\">\n                        <label id=\"gLabel\">°¡Àå ¸¹ÀÌ »ç¿ëµÈ »ç¿îµå</label>\n                        <ol id=\"list-mostused\"></ol>\n                      </div>\n                      <div class=\"sound-list\">\n                        <label id=\"gLabel\">»ç¿ëÀÚ ¸®ºä°¡ ³ôÀº »ç¿îµå</label>\n                        <ol id=\"list-review\"></ol>\n                      </div>\n                    </div>\n              </div>\n          </div>\n        </div>\n    </div>\n\n    <script src=\"../static/js/script.js\"></script>\n\n</body>\n\n</html>"
+2026-04-12 00:45:11,631 - INFO - 127.0.0.1 - - [12/Apr/2026 00:45:11] "GET / HTTP/1.1" 200 -
+2026-04-12 00:45:11,702 - INFO - 127.0.0.1 - - [12/Apr/2026 00:45:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-12 00:45:11,703 - INFO - 127.0.0.1 - - [12/Apr/2026 00:45:11] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+2026-04-12 00:45:11,703 - INFO - 127.0.0.1 - - [12/Apr/2026 00:45:11] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2026-04-12 00:45:47,728 - WARNING - C:\Users\choij\OneDrive\Desktop\asia\venv\Lib\site-packages\transformers\models\auto\modeling_auto.py:2284: FutureWarning: The class `AutoModelForVision2Seq` is deprecated and will be removed in v5.0. Please use `AutoModelForImageTextToText` instead.
+  warnings.warn(
+
+2026-04-12 00:45:53,491 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-12 00:45:53,492 - INFO - [33mPress CTRL+C to quit[0m
+2026-04-12 00:45:53,494 - INFO -  * Restarting with stat
+2026-04-12 00:46:00,538 - WARNING - C:\Users\choij\OneDrive\Desktop\asia\venv\Lib\site-packages\transformers\models\auto\modeling_auto.py:2284: FutureWarning: The class `AutoModelForVision2Seq` is deprecated and will be removed in v5.0. Please use `AutoModelForImageTextToText` instead.
+  warnings.warn(
+
+2026-04-12 00:46:06,244 - WARNING -  * Debugger is active!
+2026-04-12 00:46:06,245 - INFO -  * Debugger PIN: 456-615-527
+2026-04-12 00:46:50,928 - INFO - [CALL] index args=[], kwargs={}
+2026-04-12 00:46:50,932 - INFO - [RETURN] index result="<!DOCTYPE html>\n<html lang=\"ko\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css\">\n    <script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n    <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>\n    <title>¹ÝÀÀÇü »çÀÌµå ¸Þ´º¹Ù</title>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"../static/css/style.css\">\n</head>\n\n<body>\n    <div class=\"headerContainer\">\n    <h1><img src=\"../static/img/logo.png\" alt=\"A.S.I.A ·Î°í\" id=\"image\"> A.S.I.A</h1>\n    <button type=\"button\" class=\"customButton4\" id=\"merge\">¿µ»ó ÃßÃâ</button>\n    </div>\n    <div class=\"container\">\n        <div class=\"sidebar\">\n            <p id=\"sound\" class=\"menu\"><i class=\"fas fa-magic\"></i> »ý¼ºÇÏ±â</p>\n            <p id=\"main\" class=\"menu\"><i class=\"fas fa-cut\"></i> ÆíÁýÇÏ±â</p>\n            <p id=\"dashboard\" class=\"menu\"><i class=\"fas fa-chart-line\"></i> ´ë½Ãº¸µå</p>\n            <p id=\"price\" class=\"menu\"><i class=\"fas fa-money-bill\"></i> ¿ä±Ý</p>\n        </div>\n\n        <div class=\"content hide\" id=\"soundContent\">\n            <div class=\"sub-sound\">\n            <section>\n                <div class=\"sub-container\">\n                <h2>ºñµð¿À ¾÷·Îµå</h2>\n                    <form id=\"uploadForm\" enctype=\"multipart/form-data\">\n                    <input type=\"file\" name=\"file\" accept=\"video/*\">\n                    <input type=\"button\" value=\"¾÷·Îµå\" onclick=\"uploadVideo()\">\n                </form>\n                </div>\n                <video id=\"originalVideoPlayer\" controls>\n                    <source src=\"\" type=\"video/mp4\">\n                    ºñµð¿À¸¦ Áö¿øÇÏÁö ¾Ê´Â ºê¶ó¿ìÀúÀÔ´Ï´Ù.\n                </video>\n            </section>\n            <section>\n                <div class=\"sub-container\">\n                <h2>°´Ã¼ Å½Áö °á°ú</h2>\n                </div>\n                <video id=\"labeledVideoPlayer\" controls>\n                    <source src=\"\" type=\"video/mp4\">\n                    ºñµð¿À¸¦ Áö¿øÇÏÁö ¾Ê´Â ºê¶ó¿ìÀúÀÔ´Ï´Ù.\n                </video>\n            </section>\n            </div>\n            <section id=\"subsection\">\n                <h2>Å½Áö °á°ú</h2>\n                <div id=\"results\">\n                    <div class=\"wrapper\" style=\"display: none;\">\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                    </div>\n                </div>\n            </section>\n            <section id=\"subsection\">\n                <h2>Ä¸Ã³ ¹× Ä¸¼Ç °á°ú</h2>\n                <div id=\"captureHighlights\">\n                    <div class=\"wrapper\" style=\"display: none;\">\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"circle\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                        <div class=\"shadow\"></div>\n                    </div>\n                </div>\n            </section>\n        </div>\n\n        <div class=\"content hide\" id=\"mainContent\">\n            <div class=\"mainInner\">\n                <div class=\"container1\">\n                    <div class=\"square1\" id=\"square1\">\n                        <div class=\"listTitle\">Text-to-Sound</div>\n                        <form id=\"audioForm\" method=\"post\">\n                        <div class=\"form-group\">\n                            <label for=\"text\">ÅØ½ºÆ®:</label>\n                            <input type=\"text\" id=\"text\" name=\"text\">\n                        </div>\n                        <div class=\"form-group\">\n                            <label for=\"duration\">±æÀÌ(ÃÊ):</label>\n                            <input type=\"number\" id=\"duration\" name=\"duration\">\n                        </div>\n                        <div id=\"ldmButton\">\n                            <input type=\"button\" value=\"¿Àµð¿À »ý¼º\" onclick=\"generateAudio()\">\n                            <input type=\"button\" value=\"¿Àµð¿À ÀúÀå\" onclick=\"saveAudio()\" id=\"saveButton\">\n                        </div>\n                        <audio id=\"audioPlayer\" controls style=\"display:none;\"></audio>\n                    </div>\n                    <div class=\"square11\" id=\"square11\">\n                        <div class=\"listTitle\">È¿°úÀ½ ¸®½ºÆ®</div>\n                            <ul></ul>\n                    </div>\n                </div>\n                <div class=\"squareVertical\">\n                    <div class=\"square2\">\n                        <div class=\"video-container\">\n                            <video id=\"videoPlayer1\" controls>\n                                <source src=\"\" type=\"video/mp4\">\n                            </video>\n                        </div>\n                        <div class=\"timeline-container\">\n                            <div class=\"timeline\" id=\"videoTimeline\">\n                                <div class=\"timeline-seeker\"></div>\n                            </div>\n                        <div class=\"timeline\" id=\"audioTimeline\" style=\"background-color: #007bff; width: 0;\"></div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"content hide\" id=\"priceContent\">\n            <div class=\"mainContentContainer\">\n                    <div class=\"squareContainer\">\n                    <div class=\"pack-container\">\n                        <div class=\"header\">\n                          <p class=\"title\">\n                            Starter\n                          </p>\n                          <div class=\"price-container\">\n                            <span>$</span>Free\n                            <span>/mo</span>\n                          </div>\n                        </div>\n                        <div>\n                          <ul class=\"lists\">\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                AI ¿µ»óºÐ¼®\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                ¿µ»ó °´Ã¼ Å½Áö(100tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                               È¿°úÀ½ »ý¼º(100tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                                <span>\n                                  <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                  </svg>\n                                </span>\n                                <p>\n                                 ±¤°í Æ÷ÇÔ\n                                </p>\n                              </li>\n                          </ul>\n                        </div>\n                        <div class=\"button-container\">\n                          <button type=\"button\">\n                            Free Trial\n                          </button>\n                        </div>\n                    </div>\n                    \n                    <div class=\"pack-container\">\n                        <div class=\"header\">\n                          <p class=\"title\">\n                            Pro\n                          </p>\n                          <div class=\"price-container\">\n                            <span>$</span>9.99\n                            <span>/mo</span>\n                          </div>\n                        </div>\n                        <div>\n                          <ul class=\"lists\">\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                AI ¿µ»óºÐ¼®\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                ¿µ»ó °´Ã¼ Å½Áö(300tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                               È¿°úÀ½ »ý¼º(300tokens)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                                <span>\n                                  <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                  </svg>\n                                </span>\n                                <p>\n                                 ±¤°í Á¦°Å\n                                </p>\n                              </li>\n                          </ul>\n                        </div>\n                        <div class=\"button-container\">\n                          <button type=\"button\">\n                            Buy Now\n                          </button>\n                        </div>\n                      </div>\n\n                      <div class=\"pack-container\">\n                        <div class=\"header\">\n                          <p class=\"title\">\n                            Pro+\n                          </p>\n                          <div class=\"price-container\">\n                            <span>$</span>19.99\n                            <span>/mo</span>\n                          </div>\n                        </div>\n                        <div>\n                          <ul class=\"lists\">\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                AI ¿µ»óºÐ¼®\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                                ¿µ»ó °´Ã¼ Å½Áö(no limit)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                              <span>\n                                <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                  <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                </svg>\n                              </span>\n                              <p>\n                               È¿°úÀ½ »ý¼º(no limit)\n                              </p>\n                            </li>\n                            <li class=\"list\">\n                                <span>\n                                  <svg aria-hidden=\"true\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                                    <path d=\"M4.5 12.75l6 6 9-13.5\" stroke-linejoin=\"round\" stroke-linecap=\"round\"></path>\n                                  </svg>\n                                </span>\n                                <p>\n                                 ±¤°í Á¦°Å\n                                </p>\n                              </li>\n                          </ul>\n                        </div>\n                        <div class=\"button-container\">\n                          <button type=\"button\">\n                            Buy Now\n                          </button>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"content hide\" id=\"dashboardContent\">\n          \n          <div class=\"dashboardcontainer\">\n            <div class=\"line-container\">\n                <div class=\"graph\">\n                    <label id=\"gLabel\">ÇÏ·ç Áß ÀÌ¿ë ½Ã°£´ë</label>\n                    <canvas id=\"graph-timeofday\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                </div>\n                <div class=\"graph\">\n                    <label id=\"gLabel\">ÀÏÀÏ »ç¿îµå »ý¼º·®</label>\n                    <canvas id=\"graph-soundcreation\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                </div>\n            </div>\n            <div class=\"pl-container\">\n                <div class=\"chart-container\">\n                    <div class=\"pie-chart\">\n                        <label id=\"gLabel\">¿ä±ÝÁ¦ º° ºñÀ²</label>\n                        <canvas id=\"chart-subscription\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                    </div>\n                    <div class=\"pie-chart\">\n                        <label id=\"gLabel\">API ¹× AI »ç¿ë ºñÀ²</label>\n                        <canvas id=\"chart-api-ai\"></canvas> <!-- Äµ¹ö½º Ãß°¡ -->\n                    </div>\n                </div>\n                    <div class=\"sound-container\">\n                      <div class=\"sound-list\">\n                        <label id=\"gLabel\">°¡Àå ¸¹ÀÌ »ç¿ëµÈ »ç¿îµå</label>\n                        <ol id=\"list-mostused\"></ol>\n                      </div>\n                      <div class=\"sound-list\">\n                        <label id=\"gLabel\">»ç¿ëÀÚ ¸®ºä°¡ ³ôÀº »ç¿îµå</label>\n                        <ol id=\"list-review\"></ol>\n                      </div>\n                    </div>\n              </div>\n          </div>\n        </div>\n    </div>\n\n    <script src=\"../static/js/script.js\"></script>\n\n</body>\n\n</html>"
+2026-04-12 00:46:50,932 - INFO - 127.0.0.1 - - [12/Apr/2026 00:46:50] "GET / HTTP/1.1" 200 -
+2026-04-12 00:46:50,998 - INFO - 127.0.0.1 - - [12/Apr/2026 00:46:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-12 00:46:51,002 - INFO - 127.0.0.1 - - [12/Apr/2026 00:46:51] "[36mGET /static/img/logo.png HTTP/1.1[0m" 304 -
+2026-04-12 00:46:51,002 - INFO - 127.0.0.1 - - [12/Apr/2026 00:46:51] "[36mGET /static/js/script.js HTTP/1.1[0m" 304 -
+2026-04-12 00:47:05,266 - INFO - [CALL] upload_video args=[], kwargs={}
+2026-04-12 00:47:05,286 - INFO - [RETURN] upload_video result="<Response 72 bytes [200 OK]>"
+2026-04-12 00:47:05,286 - INFO - 127.0.0.1 - - [12/Apr/2026 00:47:05] "POST /upload/video HTTP/1.1" 200 -
+2026-04-12 00:47:05,290 - INFO - [CALL] process_labels args=[], kwargs={}
+2026-04-12 00:47:05,290 - INFO - [CALL] perform_detection_and_labeling args=[
+  "uploads\\ddd.mp4",
+  "uploads\\labeled_ddd.mp4"
+], kwargs={}
+2026-04-12 00:47:05,298 - INFO - 127.0.0.1 - - [12/Apr/2026 00:47:05] "[35m[1mGET /uploads/ddd.mp4 HTTP/1.1[0m" 206 -
+2026-04-12 00:47:05,352 - INFO - 127.0.0.1 - - [12/Apr/2026 00:47:05] "[35m[1mGET /uploads/ddd.mp4 HTTP/1.1[0m" 206 -
+2026-04-12 00:47:05,356 - INFO - 127.0.0.1 - - [12/Apr/2026 00:47:05] "[35m[1mGET /uploads/ddd.mp4 HTTP/1.1[0m" 206 -
+2026-04-12 00:47:05,358 - INFO - 127.0.0.1 - - [12/Apr/2026 00:47:05] "[35m[1mGET /uploads/ddd.mp4 HTTP/1.1[0m" 206 -
+2026-04-12 00:47:05,949 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,038 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,084 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,132 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,187 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,236 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,292 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,338 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,390 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,443 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,492 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,540 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,590 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,639 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,687 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,737 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,788 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,841 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,893 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,935 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:06,978 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,024 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,070 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,114 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,164 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,210 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,264 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,306 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,349 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,396 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,437 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,478 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,522 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,561 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,605 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,656 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,698 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,747 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,800 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,850 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,897 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:07,945 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,002 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,049 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,103 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,159 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,206 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,260 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,312 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,371 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,428 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,481 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,536 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,589 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,634 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,678 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,723 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,770 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,820 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,864 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,912 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:08,964 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,013 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,056 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,109 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,158 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,204 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,250 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,305 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,351 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,399 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,450 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,501 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,547 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,593 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,639 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,697 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,748 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,793 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,850 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,899 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:09,949 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,004 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,059 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,105 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,151 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,200 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,251 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,301 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,349 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,402 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,454 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,500 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,542 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,590 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,642 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,682 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,732 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,784 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,834 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,877 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,924 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:10,975 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,014 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,062 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,105 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,148 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,188 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,239 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,288 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,336 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,384 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,436 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,494 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,542 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,593 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,646 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,700 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,750 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,797 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,854 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,898 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,940 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:11,988 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,030 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,080 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,120 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,162 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,201 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,242 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,288 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,331 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,376 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,425 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,471 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,514 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,555 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,603 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,647 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,696 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,741 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,787 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,841 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,891 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,941 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:12,996 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,052 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,102 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,152 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,202 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,246 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,296 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,353 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,405 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,457 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,504 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,549 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,592 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,644 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,691 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,743 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,785 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,830 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,879 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,927 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:13,971 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,015 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,059 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,111 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,161 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,216 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,265 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,316 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,372 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,427 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,477 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,530 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,583 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,632 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,688 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,745 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,799 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,856 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,907 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:14,961 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,014 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,069 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,114 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,168 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,223 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,273 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,318 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,364 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,419 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,471 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,515 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,565 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,614 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,665 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,711 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,754 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,794 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,841 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,882 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,923 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:15,968 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,015 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,060 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,105 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,160 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,206 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,245 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,301 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,350 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,402 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,461 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,514 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,561 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,611 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,672 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,723 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,778 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,827 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,877 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,931 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:16,977 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,024 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,067 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,118 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,166 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,219 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,266 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,312 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,358 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,404 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,458 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,509 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,561 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,608 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,649 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,692 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,742 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,789 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,830 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,876 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,919 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:17,974 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,027 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,074 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,127 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,168 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,227 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,274 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,319 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,362 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,411 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,455 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,507 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,556 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,598 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,647 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,694 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,739 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,778 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,833 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,875 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,916 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,956 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:18,997 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,047 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,093 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,140 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,184 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,237 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,278 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,329 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,379 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,433 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,485 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,536 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,596 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,656 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,714 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,763 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,818 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,870 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,917 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:19,964 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,016 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,062 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,116 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,171 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,219 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,273 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,317 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,358 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,402 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,445 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,487 - WARNING - C:\Users\choij/.cache\torch\hub\ultralytics_yolov5_master\models\common.py:899: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with amp.autocast(autocast):
+
+2026-04-12 00:47:20,580 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.0,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:20,580 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.0,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:20,580 - INFO - [CALL] capture_at_intervals args=[
+  "uploads\\ddd.mp4",
+  [
+    [
+      0.0,
+      12.416666666666666
+    ]
+  ],
+  "train",
+  "uploads"
+], kwargs={}
+2026-04-12 00:47:20,580 - INFO - [RETURN] capture_at_intervals result="<generator object capture_at_intervals at 0x00000227120667A0>"
+2026-04-12 00:47:20,776 - INFO - [CALL] generate_caption_for_image args=[
+  "uploads\\capture_train_0.jpg"
+], kwargs={}
+2026-04-12 00:47:31,194 - INFO - [RETURN] generate_caption_for_image result="A black and white film still showing a street scene with a tram and a man in a suit"
+2026-04-12 00:47:31,206 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.0,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:31,206 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.0,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:31,206 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.5416666666666666,
+      0.5416666666666666
+    ],
+    [
+      0.8333333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:31,206 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.5416666666666666,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:31,206 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      8.875,
+      11.25
+    ],
+    [
+      11.333333333333334,
+      11.375
+    ],
+    [
+      11.458333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:31,206 - INFO - [RETURN] merge_intervals result=[
+  [
+    8.875,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:31,206 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.5416666666666666,
+      0.5416666666666666
+    ],
+    [
+      0.8333333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:31,206 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.5416666666666666,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:31,206 - INFO - [CALL] capture_at_intervals args=[
+  "uploads\\ddd.mp4",
+  [
+    [
+      0.5416666666666666,
+      12.416666666666666
+    ]
+  ],
+  "horse",
+  "uploads"
+], kwargs={}
+2026-04-12 00:47:31,206 - INFO - [RETURN] capture_at_intervals result="<generator object capture_at_intervals at 0x00000227120667A0>"
+2026-04-12 00:47:31,384 - INFO - [CALL] generate_caption_for_image args=[
+  "uploads\\capture_horse_0.jpg"
+], kwargs={}
+2026-04-12 00:47:34,187 - INFO - [RETURN] generate_caption_for_image result="A man is seen on a horse-drawn carriage."
+2026-04-12 00:47:34,199 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.0,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:34,199 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.0,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:34,199 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.5416666666666666,
+      0.5416666666666666
+    ],
+    [
+      0.8333333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:34,199 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.5416666666666666,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:34,199 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      8.875,
+      11.25
+    ],
+    [
+      11.333333333333334,
+      11.375
+    ],
+    [
+      11.458333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:34,199 - INFO - [RETURN] merge_intervals result=[
+  [
+    8.875,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:34,199 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      8.875,
+      11.25
+    ],
+    [
+      11.333333333333334,
+      11.375
+    ],
+    [
+      11.458333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:34,199 - INFO - [RETURN] merge_intervals result=[
+  [
+    8.875,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:34,199 - INFO - [CALL] capture_at_intervals args=[
+  "uploads\\ddd.mp4",
+  [
+    [
+      8.875,
+      12.416666666666666
+    ]
+  ],
+  "wheel",
+  "uploads"
+], kwargs={}
+2026-04-12 00:47:34,200 - INFO - [RETURN] capture_at_intervals result="<generator object capture_at_intervals at 0x00000227120667A0>"
+2026-04-12 00:47:34,405 - INFO - [CALL] generate_caption_for_image args=[
+  "uploads\\capture_wheel_0.jpg"
+], kwargs={}
+2026-04-12 00:47:37,226 - INFO - [RETURN] generate_caption_for_image result="A man walks down a street in Paris, France."
+2026-04-12 00:47:37,236 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.0,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:37,236 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.0,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:37,236 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      0.5416666666666666,
+      0.5416666666666666
+    ],
+    [
+      0.8333333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:37,236 - INFO - [RETURN] merge_intervals result=[
+  [
+    0.5416666666666666,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:37,236 - INFO - [CALL] merge_intervals args=[
+  [
+    [
+      8.875,
+      11.25
+    ],
+    [
+      11.333333333333334,
+      11.375
+    ],
+    [
+      11.458333333333334,
+      12.416666666666666
+    ]
+  ]
+], kwargs={}
+2026-04-12 00:47:37,236 - INFO - [RETURN] merge_intervals result=[
+  [
+    8.875,
+    12.416666666666666
+  ]
+]
+2026-04-12 00:47:37,237 - INFO - [RETURN] perform_detection_and_labeling result=[
+  [
+    {
+      "class": "train",
+      "intervals": [
+        [
+          0.0,
+          12.416666666666666
+        ]
+      ],
+      "total_duration": 12.416666666666666,
+      "captures": [
+        {
+          "time": 6.208333333333333,
+          "interval": [
+            0.0,
+            12.416666666666666
+          ],
+          "capture_url": "/uploads/capture_train_0.jpg",
+          "caption": "A black and white film still showing a street scene with a tram and a man in a suit",
+          "capture_filename": "capture_train_0.jpg"
+        }
+      ]
+    },
+    {
+      "class": "horse",
+      "intervals": [
+        [
+          0.5416666666666666,
+          12.416666666666666
+        ]
+      ],
+      "total_duration": 11.875,
+      "captures": [
+        {
+          "time": 6.479166666666666,
+          "interval": [
+            0.5416666666666666,
+            12.416666666666666
+          ],
+          "capture_url": "/uploads/capture_horse_0.jpg",
+          "caption": "A man is seen on a horse-drawn carriage.",
+          "capture_filename": "capture_horse_0.jpg"
+        }
+      ]
+    },
+    {
+      "class": "wheel",
+      "intervals": [
+        [
+          8.875,
+          12.416666666666666
+        ]
+      ],
+      "total_duration": 3.541666666666666,
+      "captures": [
+        {
+          "time": 10.645833333333332,
+          "interval": [
+            8.875,
+            12.416666666666666
+          ],
+          "capture_url": "/uploads/capture_wheel_0.jpg",
+          "caption": "A man walks down a street in Paris, France.",
+          "capture_filename": "capture_wheel_0.jpg"
+        }
+      ]
+    }
+  ],
+  {
+    "train": [
+      {
+        "time": 6.208333333333333,
+        "interval": [
+          0.0,
+          12.416666666666666
+        ],
+        "capture_url": "/uploads/capture_train_0.jpg",
+        "caption": "A black and white film still showing a street scene with a tram and a man in a suit",
+        "capture_filename": "capture_train_0.jpg"
+      }
+    ],
+    "horse": [
+      {
+        "time": 6.479166666666666,
+        "interval": [
+          0.5416666666666666,
+          12.416666666666666
+        ],
+        "capture_url": "/uploads/capture_horse_0.jpg",
+        "caption": "A man is seen on a horse-drawn carriage.",
+        "capture_filename": "capture_horse_0.jpg"
+      }
+    ],
+    "wheel": [
+      {
+        "time": 10.645833333333332,
+        "interval": [
+          8.875,
+          12.416666666666666
+        ],
+        "capture_url": "/uploads/capture_wheel_0.jpg",
+        "caption": "A man walks down a street in Paris, France.",
+        "capture_filename": "capture_wheel_0.jpg"
+      }
+    ]
+  }
+]
+2026-04-12 00:47:37,237 - INFO - [RETURN] process_labels result="<Response 2802 bytes [200 OK]>"
+2026-04-12 00:47:37,237 - INFO - 127.0.0.1 - - [12/Apr/2026 00:47:37] "POST /process/labels HTTP/1.1" 200 -
+2026-04-12 00:47:37,242 - INFO - [CALL] process_audio args=[], kwargs={}
+2026-04-12 00:47:37,242 - INFO - [CALL] generate_caption_for_image args=[
+  "uploads\\capture_horse_0.jpg"
+], kwargs={}
+2026-04-12 00:47:40,101 - INFO - [RETURN] generate_caption_for_image result="A man is seen on a horse-drawn carriage."
+2026-04-12 00:47:40,101 - INFO - [CALL] generate_sound_from_caption args=[
+  "A man is seen on a horse-drawn carriage.",
+  11.875
+], kwargs={}
+2026-04-12 01:25:57,473 - INFO - 127.0.0.1 - - [12/Apr/2026 01:25:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2026-04-12 01:25:57,491 - INFO - 127.0.0.1 - - [12/Apr/2026 01:25:57] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -

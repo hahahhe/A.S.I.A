@@ -16,6 +16,35 @@ import os
 import moviepy.editor as mp
 import math
 
+import json
+import logging
+from functools import wraps
+
+logging.basicConfig(
+    filename='logs/log.log',
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
+def to_json(data):
+    return json.dumps(data, indent=2, ensure_ascii=False, default=str)
+
+def log_io(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            logging.info(f"[CALL] {func.__name__} args={to_json(args)}, kwargs={to_json(kwargs)}")
+
+            result = func(*args, **kwargs)
+
+            logging.info(f"[RETURN] {func.__name__} result={to_json(result)}")
+            return result
+
+        except Exception as e:
+            logging.error(f"[ERROR] {func.__name__} error={str(e)}")
+            raise
+    return wrapper
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 30 * 1024 * 1024
@@ -42,11 +71,13 @@ audio_file_counts = defaultdict(int)
 id_mapping = {}
 
 @app.route('/', methods=['GET'])
+@log_io
 def index():
     # 메인 페이지 렌더링
     return render_template('index.html')
 
 @app.route('/upload/video', methods=['POST'])
+@log_io
 def upload_video():
     try:
         if 'file' not in request.files:
@@ -69,6 +100,7 @@ def upload_video():
         return jsonify({'error': str(e)}), 500
 
 @app.route('/process/labels', methods=['POST'])
+@log_io
 def process_labels():
     try:
         data = request.json
@@ -92,6 +124,7 @@ def process_labels():
         return jsonify({'error': str(e)}), 500
     
 @app.route('/process/audio', methods=['POST'])
+@log_io
 def process_audio():
     try:
         data = request.json
@@ -133,6 +166,7 @@ def process_audio():
         return jsonify({'error': str(e)}), 500
 
 @app.route('/finalize/video', methods=['POST'])
+@log_io
 def finalize_video():
     try:
         data = request.json
@@ -150,6 +184,7 @@ def finalize_video():
 
 
 @app.route('/getList')
+@log_io
 def getList():
     api_key = 'EX2F14a3aOQbQeiqwu9YSbknz7IURVzBUtaeOTIB'
 
@@ -180,6 +215,7 @@ def getList():
     return jsonify(audios)
 
 @app.route('/download')
+@log_io
 def download_sound():
     api_key = 'EX2F14a3aOQbQeiqwu9YSbknz7IURVzBUtaeOTIB'
 
@@ -218,6 +254,7 @@ def download_sound():
         return f'Error downloading file: {response.reason}', response.status_code
 
 @app.route('/generate_audio', methods=['POST'])
+@log_io
 def generate_audio():
     # 오디오 생성 모델 초기화
     pipe = AudioLDM2Pipeline.from_pretrained("cvssp/audioldm2", torch_dtype=torch.float16)
@@ -238,6 +275,7 @@ def generate_audio():
     return Response(byte_io.getvalue(), mimetype='audio/wav')
 
 @app.route('/save_audio', methods=['POST'])
+@log_io
 def save_audio():
 
     print('app[saved_folder]: ', app.config['SAVED_FOLDER'])
@@ -257,6 +295,7 @@ def save_audio():
 
     return jsonify(mp3_files)
 
+@log_io
 def generate_caption_for_image(image_path):
     # 이미지로부터 캡션 생성
     image = Image.open(image_path)
@@ -275,6 +314,7 @@ def generate_caption_for_image(image_path):
     processed_text, _ = caption_processor.post_process_generation(generated_text)
     return processed_text
 
+@log_io
 def merge_intervals(intervals, threshold=0.7):
     # 인터벌을 병합하는 함수 (threshold: 인접 인터벌 병합 임계값)
     merged = []
@@ -285,7 +325,7 @@ def merge_intervals(intervals, threshold=0.7):
             merged.append([start, end])
     return merged
 
-
+@log_io
 def capture_at_intervals(video_path, intervals, class_name, upload_folder, ):
     # 비디오에서 특정 시간 간격의 이미지를 캡처
     cap = cv2.VideoCapture(video_path)
@@ -312,7 +352,7 @@ def capture_at_intervals(video_path, intervals, class_name, upload_folder, ):
             }
         capture_file_counts[class_name] += 1    
     cap.release()
-
+@log_io
 def perform_detection_and_labeling(video_path, output_path):
     # 비디오에서 객체 탐지 및 라벨링 수행
     cap = cv2.VideoCapture(video_path)
@@ -385,13 +425,13 @@ def perform_detection_and_labeling(video_path, output_path):
 
 
     return class_durations, capture_images
-
+@log_io
 def generate_sound_from_caption(caption, duration):
     # 캡션을 바탕으로 오디오 생성 - 수정된 버전
     audio = audio_pipe(caption, num_inference_steps=10, audio_length_in_s=duration).audios[0]
     actual_duration = len(audio) / 16000  # 오디오 길이 계산 (16000은 샘플링 레이트)
     return audio, actual_duration
-
+@log_io
 def add_audio_to_video(video_path, audio_clips_info):
     # 비디오에 오디오 추가 - 수정된 버전
     print('add func: ', video_path, audio_clips_info)
@@ -415,12 +455,12 @@ def add_audio_to_video(video_path, audio_clips_info):
     video_clip_with_audio.write_videofile(output_path, codec="libx264", audio_codec="aac")
 
     return output_path
-
+@log_io
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     # 업로드된 파일 제공
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
+@log_io
 @app.route('/merge', methods=['POST'])
 def merge_audio():
     data = request.json

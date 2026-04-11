@@ -1,0 +1,13 @@
+flask
+opencv-python
+torch
+torchvision
+transformers<5.0.0
+Pillow
+scipy
+diffusers
+moviepy==1.0.3
+requests
+pandas
+ultralytics
+seaborn
